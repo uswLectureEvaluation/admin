@@ -1,8 +1,8 @@
 import apiAxios from "../apiAxios";
 
-export const putNotice = async () => {
+export const postNotice = async () => {
   await apiAxios
-    .put('/notice/')
+    .post('/notice/')
     .then(r => {
       r.data;
     })

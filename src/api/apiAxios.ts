@@ -16,9 +16,12 @@ apiAxios.interceptors.request.use(config => {
   const { url, headers } = config;
   if (token) {
     headers.Authorization = `Bearer ${token}`;
-  } else {
-    window.location.href = '/';
-  }
+  } 
+  
+  
+  // else {
+  //   window.location.href = '/';
+  // }
   (error: any) => Promise.reject(error);
 
   return config;
