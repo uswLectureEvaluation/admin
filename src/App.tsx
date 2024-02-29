@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import { useEffect } from 'react';
 import { login } from './api/login';
+import Login from './pages/Login';
 
 const App = () => {
   // useEffect(() => {
@@ -13,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
