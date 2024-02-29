@@ -1,18 +1,12 @@
 import axios from 'axios';
 import apiAxios from './apiAxios';
-
 import { Cookies } from 'react-cookie';
+
+import { setCookie, getCookie } from '../utils/Cookies';
 const cookies = new Cookies();
 
-export const setCookie = (name: string, value: string, option?: any) => {
-  return cookies.set(name, value, { ...option });
-};
-export const getCookie = (name: string) => {
-  return cookies.get(name);
-};
-
 export const login = async (email: string, password: string) => {
-  const response = await apiAxios
+  await apiAxios
     .post('/v2/admin/login', {
       loginId: email,
       password: password,
