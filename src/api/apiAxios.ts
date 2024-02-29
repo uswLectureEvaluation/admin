@@ -5,6 +5,7 @@ const token = getCookie('Accesstoken');
 
 const apiAxios = axios.create({
   baseURL: import.meta.env.VITE_APP_SERVER_HOST,
+  // withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
