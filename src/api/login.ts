@@ -1,9 +1,5 @@
-import axios from 'axios';
 import apiAxios from './apiAxios';
-import { Cookies } from 'react-cookie';
-
 import { setCookie, getCookie } from '../utils/Cookies';
-const cookies = new Cookies();
 
 export const login = async (email: string, password: string) => {
   await apiAxios
