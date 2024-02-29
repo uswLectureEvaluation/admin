@@ -1,14 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { login } from '../api/login';
+import { getall } from '../api/getall';
 
 const Home = () => {
-  useEffect(() => {
-    login('test', 'test');
-  }, []);
+  const [A, SetA] = useState();
+  // useEffect(() => {
+  //   login('pos1070', '1q2w3e4r!');
+  // }, []);
 
+  useEffect(() => {
+    getall();
+    // console.log(getall());
+  }, []);
   return (
     <div>
-      <h1>Home</h1>
+      <h1>Hme</h1>
+      {A}
     </div>
   );
 };
