@@ -1,12 +1,10 @@
 import axios from 'axios';
-import { Cookies } from 'react-cookie';
+import { setCookie, getCookie } from '../utils/Cookies';
 
-const cookies = new Cookies();
-
-const token = cookies.get('token');
+const token = getCookie('Accesstoken');
 
 const apiAxios = axios.create({
-  baseURL: import.meta.env.VITE_APP_SERVICE_URL,
+  baseURL: import.meta.env.VITE_APP_SERVER_HOST,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -15,9 +13,12 @@ const apiAxios = axios.create({
 
 apiAxios.interceptors.request.use(config => {
   const { url, headers } = config;
-
-  console.log('url', url);
-  console.log('headers', headers);
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  } else {
+    window.location.href = '/';
+  }
+  (error: any) => Promise.reject(error);
 
   return config;
 });
@@ -25,21 +26,7 @@ apiAxios.interceptors.request.use(config => {
 apiAxios.interceptors.response.use(config => {
   const { headers } = config;
 
-  console.log('headers', headers);
-
   return config;
 });
-
-//   response => response,
-//   error => {
-//     const statusCode = error.response?.status;
-//     if (statusCode === 401) {
-//       error.response.statusText = 'Unauthorized';
-//       error.response.status = 401;
-//       window.location.href = '/';
-//     }
-//     return Promise.reject(error);
-//   }
-// );
 
 export default apiAxios;
