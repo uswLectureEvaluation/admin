@@ -9,6 +9,8 @@ export const login = async (email: string, password: string) => {
     })
     .then(r => {
       setCookie('Accesstoken', r.data.AccessToken);
+      console.log(r.data);
+      setCookie('member', r.data.UserCount);
     })
     .catch(e => e.response.data);
 };
