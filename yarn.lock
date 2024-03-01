@@ -538,10 +538,10 @@
     "@react-spring/shared" "~9.7.3"
     "@react-spring/types" "~9.7.3"
 
-"@remix-run/router@1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.15.1.tgz#221fd31a65186b9bc027b74573485fb3226dff7f"
-  integrity sha512-zcU0gM3z+3iqj8UX45AmWY810l3oUmXM7uH4dt5xtzvMhRtYVhKGOmgOd1877dOPPepfCjUv57w+syamWIYe7w==
+"@remix-run/router@1.15.2":
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.15.2.tgz#35726510d332ba5349c6398d13259d5da184553d"
+  integrity sha512-+Rnav+CaoTE5QJc4Jcwh5toUpnVLKYbpU6Ys0zqbakqbaLQHeglLVHPfxOiQqdNmUy5C2lXz5dwC6tQNX2JW2Q==
 
 "@rollup/rollup-android-arm-eabi@4.12.0":
   version "4.12.0"
@@ -686,6 +686,30 @@
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@swc/types/-/types-0.1.5.tgz#043b731d4f56a79b4897a3de1af35e75d56bc63a"
   integrity sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==
+
+"@tanstack/query-core@5.24.1":
+  version "5.24.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.24.1.tgz#d40928dec22b47df97fb2648e8c499772e8d7eb2"
+  integrity sha512-DZ6Nx9p7BhjkG50ayJ+MKPgff+lMeol7QYXkvuU5jr2ryW/4ok5eanaS9W5eooA4xN0A/GPHdLGOZGzArgf5Cg==
+
+"@tanstack/query-devtools@5.24.0":
+  version "5.24.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-devtools/-/query-devtools-5.24.0.tgz#b9b7828d42d5034415b1973ff4a154e880b17d59"
+  integrity sha512-pThim455t69zrZaQKa7IRkEIK8UBTS+gHVAdNfhO72Xh4rWpMc63ovRje5/n6iw63+d6QiJzVadsJVdPoodSeQ==
+
+"@tanstack/react-query-devtools@^5.24.1":
+  version "5.24.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query-devtools/-/react-query-devtools-5.24.1.tgz#e3a8ea71115fb899119126e1507fc340ee9d9496"
+  integrity sha512-qa4SEugN+EF8JJXcpsM9Lu05HfUv5cvHvLuB0uw/81eJZyNHFdtHFBi5RLCgpBrOyVMDfH8UQ3VBMqXzFKV68A==
+  dependencies:
+    "@tanstack/query-devtools" "5.24.0"
+
+"@tanstack/react-query@^5.24.1":
+  version "5.24.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.24.1.tgz#bcb913febe0d813cec1fda7783298d07aa998b20"
+  integrity sha512-4+09JEdO4d6+Gc8Y/g2M/MuxDK5IY0QV8+2wL2304wPKJgJ54cBbULd3nciJ5uvh/as8rrxx6s0mtIwpRuGd1g==
+  dependencies:
+    "@tanstack/query-core" "5.24.1"
 
 "@types/cookie@^0.6.0":
   version "0.6.0"
@@ -1893,20 +1917,20 @@ react-is@^18.2.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
-react-router-dom@^6.22.1:
-  version "6.22.1"
-  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.22.1.tgz#cfa109d4b6b0a4d00bac179bc0ad2a6469455282"
-  integrity sha512-iwMyyyrbL7zkKY7MRjOVRy+TMnS/OPusaFVxM2P11x9dzSzGmLsebkCvYirGq0DWB9K9hOspHYYtDz33gE5Duw==
+react-router-dom@^6.22.2:
+  version "6.22.2"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.22.2.tgz#8233968a8a576f3006e5549c80f3527d2598fc9c"
+  integrity sha512-WgqxD2qySEIBPZ3w0sHH+PUAiamDeszls9tzqMPBDA1YYVucTBXLU7+gtRfcSnhe92A3glPnvSxK2dhNoAVOIQ==
   dependencies:
-    "@remix-run/router" "1.15.1"
-    react-router "6.22.1"
+    "@remix-run/router" "1.15.2"
+    react-router "6.22.2"
 
-react-router@6.22.1:
-  version "6.22.1"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.22.1.tgz#a5ff849bfe709438f7e139421bb28138209662c7"
-  integrity sha512-0pdoRGwLtemnJqn1K0XHUbnKiX0S4X8CgvVVmHGOWmofESj31msHo/1YiqcJWK7Wxfq2a4uvvtS01KAQyWK/CQ==
+react-router@6.22.2:
+  version "6.22.2"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.22.2.tgz#27e77e4c635a5697693b922d131d773451c98a5b"
+  integrity sha512-YD3Dzprzpcq+tBMHBS822tCjnWD3iIZbTeSXMY9LPSG541EfoBGyZ3bS25KEnaZjLcmQpw2AVLkFyfgXY8uvcw==
   dependencies:
-    "@remix-run/router" "1.15.1"
+    "@remix-run/router" "1.15.2"
 
 react-transition-group@^4.4.5:
   version "4.4.5"
