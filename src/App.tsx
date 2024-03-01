@@ -7,9 +7,9 @@ import Login from './pages/Login';
 import Main from './pages/Main';
 
 const App = () => {
-  useEffect(() => {
-    login('pos1070', '1q2w3e4r!');
-  }, []);
+  // useEffect(() => {
+  //   login('pos1070', '1q2w3e4r!');
+  // }, []);
   const BaseUrl = import.meta.env.BASE_URL;
 
   return (

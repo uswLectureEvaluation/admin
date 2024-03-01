@@ -8,14 +8,48 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-
-
+import { login } from '../api/login';
+import { useEffect, useState } from 'react';
+// import { Cookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
+import { getCookie } from '../utils/Cookies';
+import { useMutation } from '@tanstack/react-query';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 const Login = () => {
+    const navigate = useNavigate();
+    const [loading,setLoading] = useState(false)
+    
+    useEffect(()=>{
+        const IsToken = getCookie("Accesstoken")
+        if(IsToken){
+            setLoading(true)
+        }
+    })
+   
+    useEffect(()=>{
+        if(loading){
+            navigate("/main")
+        }
+    },)
+   
+
+
+  
+    
+
+
+    const onKeypress = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            const data = new FormData(e.currentTarget.form as HTMLFormElement);
+            login(String(data.get('email')), String(data.get('password')));
+        }
+    };
+
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -23,8 +57,22 @@ const Login = () => {
             email: data.get('email'),
             password: data.get('password'),
         });
+
+        return({
+            email: data.get('email'),
+            password: data.get('password'),
+        })
+        // login(String(data.get('email')), String(data.get('password')));
     };
 
+
+    // const LoginMutation = useMutation({
+    //     mutationFn: () => login(String(data.get('email')), String(data.get('password'))),
+    //     onSuccess: () => { console.log('요청 성공') },
+    //     onError: () => { console.error('에러 발생') },
+    //     onSettled: () => { console.log('결과에 관계 없이 무언가 실행됨') }
+    // });
+      
     return (
         <ThemeProvider theme={defaultTheme}>
             <Container component="main" maxWidth="xs">
@@ -70,7 +118,7 @@ const Login = () => {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
-                            
+                            onKeyDown={onKeypress}
                         >
                           로그인
                         </Button>
