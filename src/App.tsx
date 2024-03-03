@@ -2,8 +2,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import { useEffect } from 'react';
-import { login } from './api/login';
-import Login from './pages/Login';
+// import { login } from './api/login';
+import LoginAPi from './pages/Login';
 import Main from './pages/Main';
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LoginAPi />} />
         <Route path="/Main" element={<Main />} />
         <Route path="/Home" element={<Home />} />
       </Routes>
