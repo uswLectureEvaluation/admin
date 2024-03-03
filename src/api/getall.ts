@@ -2,10 +2,9 @@ import { ReportData } from '../types/all';
 import apiAxios from './apiAxios';
 
 export const getall = async () => {
-  await apiAxios
+  return await apiAxios
     .get<ReportData>('v2/admin/reported-posts')
-    .then(r => {
-      r.data;
-    })
+    .then(response => response.data)
+
     .catch(e => e.response.data);
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { login } from '../api/login';
+// import { login } from '../api/login';
 import { getall } from '../api/getall';
 
 const Home = () => {

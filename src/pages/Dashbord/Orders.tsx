@@ -6,7 +6,8 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
-
+import { useQuery } from '@tanstack/react-query';
+import { getall } from '../../api/getall';
 // Generate Order Data
 function createData(
   id: number,
@@ -19,55 +20,27 @@ function createData(
   return { id, date, name, shipTo, paymentMethod, amount };
 }
 
-const a = '장성태';
-const rows = [
-  createData(
-    0,
-    '16 Mar, 2019',
-    'Elvis Presley',
-    'Tupelo, MS',
-    'VISA ⠀•••• 3719',
-    312.44
-  ),
-  createData(
-    1,
-    '16 Mar, 2019',
-    'Paul McCartney',
-    'London, UK',
-    'VISA ⠀•••• 2574',
-    866.99
-  ),
-  createData(
-    2,
-    '16 Mar, 2019',
-    'Tom Scholz',
-    'Boston, MA',
-    'MC ⠀•••• 1253',
-    100.81
-  ),
-  createData(
-    3,
-    '16 Mar, 2019',
-    'Michael Jackson',
-    'Gary, IN',
-    'AMEX ⠀•••• 2000',
-    654.39
-  ),
-  createData(
-    4,
-    '15 Mar, 2019',
-    'Bruce Springsteen',
-    'Long Branch, NJ',
-    'VISA ⠀•••• 5919',
-    212.79
-  ),
-];
-
 function preventDefault(event: React.MouseEvent) {
   event.preventDefault();
 }
 
 export default function Orders() {
+  const { data } = useQuery({ queryKey: ['as'], queryFn: getall });
+  const examdata = data?.examPostReports;
+  const evaluatedata = data?.evaluatePostReports;
+  console.log(examdata, evaluatedata);
+
+  // console.log(data);
+  function formatDate(date: string): string {
+    const formattedDate = new Date(date).toLocaleDateString('ko-KR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    return formattedDate;
+  }
+
+  console.log(formatDate(data));
   return (
     <React.Fragment>
       <Title>신고내역</Title>
@@ -78,25 +51,23 @@ export default function Orders() {
             <TableCell>교수이름</TableCell>
             <TableCell>과목명</TableCell>
             <TableCell>신고내용</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell>처리여부</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {rows.map(row => (
-            <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
-            </TableRow>
-          ))}
+          {evaluatedata.map((data: any) => {
+            return (
+              <TableRow key={data.id}>
+                <TableCell>{formatDate(data.reportedDate)}</TableCell>
+                <TableCell>{data.professor}</TableCell>
+                <TableCell>{data.lectureName}</TableCell>
+                <TableCell>{data.content}</TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
-      {/* <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
-      </Link> */}
     </React.Fragment>
   );
 }
