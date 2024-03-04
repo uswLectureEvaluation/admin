@@ -1,8 +1,8 @@
-import apiAxios from "../apiAxios";
+import apiAxios from '../apiAxios';
 
-export const deleteNotice = async () => {
-  await apiAxios
-    .delete('/notice/')
+export const deleteNotice = async (id: number) => {
+  return await apiAxios
+    .delete(`/notice/noticeId=${id}`)
     .then(r => {
       r.data;
     })
