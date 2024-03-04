@@ -39,8 +39,8 @@ export default function Notice() {
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Modified Date</TableCell>
+              <TableCell>공지</TableCell>
+              <TableCell>날짜</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -49,7 +49,7 @@ export default function Notice() {
                 <TableCell>{notice.id}</TableCell>
                 <TableCell>{notice.title}</TableCell>
                 <TableCell>
-                  {new Date(notice.modifiedDate).toLocaleDateString('en-US', {
+                  {new Date(notice.modifiedDate).toLocaleDateString('ko-KR', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',

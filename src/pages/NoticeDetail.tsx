@@ -27,9 +27,10 @@ const NoticeDetail = () => {
     queryFn: () => getNoticeDetail(1),
   });
 
+  
   console.log(noticeData);
   return (
-    <Container>
+    <Container  maxWidth="sm"  >
       <Typography variant="h4">공지사항</Typography>
       <div>
         <Typography variant="h6">{noticeData?.data.title}</Typography>
@@ -38,17 +39,18 @@ const NoticeDetail = () => {
         </Typography>
         <Typography variant="body1">{noticeData?.data.content}</Typography>
       </div>
-      <div>
-        <Button variant="contained" onClick={() => navigate('/main')}>
+      <div style={{ marginTop: '10px' }}>
+        <Button sx={{ my: 4, mx: 2 }} variant="contained" onClick={() => navigate('/main')} >
           목록
         </Button>
         <Button
+        sx={{ mx: 2 }} 
           variant="contained"
           onClick={() => navigate('/update', { state: { props: db.data } })}
         >
           수정
         </Button>
-        <Button variant="contained" onClick={onDelete}>
+        <Button sx={{ mx: 2 }}  variant="contained" onClick={onDelete}>
           삭제
         </Button>
       </div>

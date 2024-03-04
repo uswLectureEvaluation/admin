@@ -8,11 +8,6 @@ import Main from './pages/Main';
 import NoticeDetail from './pages/NoticeDetail';
 
 const App = () => {
-  // useEffect(() => {
-  //   login('pos1070', '1q2w3e4r!');
-  // }, []);
-  const BaseUrl = import.meta.env.BASE_URL;
-
   return (
     <BrowserRouter>
       <Routes>
