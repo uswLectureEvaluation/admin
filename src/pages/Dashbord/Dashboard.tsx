@@ -19,7 +19,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './ListItem';
 import Chart from './Chart';
 import Deposits from './Deposits';
-import Orders from './Orders';
+import Reoports from './Reports';
+import Notice from './Notice';
 
 const drawerWidth: number = 240;
 
@@ -158,7 +159,6 @@ export default function Dashboard() {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
-              {/* Chart */}
               <Grid item xs={12} md={8} lg={9}>
                 <Paper
                   sx={{
@@ -171,7 +171,7 @@ export default function Dashboard() {
                   <Chart />
                 </Paper>
               </Grid>
-              {/* Recent Deposits */}
+
               <Grid item xs={12} md={4} lg={3}>
                 <Paper
                   sx={{
@@ -184,11 +184,23 @@ export default function Dashboard() {
                   <Deposits />
                 </Paper>
               </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
+
+              <Grid
+                item
+                xs={12}
+                sx={{ display: 'flex', justifyContent: 'center' }}
+              >
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <Reoports />
                 </Paper>
+              </Grid>
+
+              <Grid
+                item
+                xs={12}
+                sx={{ display: 'flex', justifyContent: 'center' }}
+              >
+                <Notice />
               </Grid>
             </Grid>
           </Container>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 // import { login } from '../api/login';
-import { getall } from '../api/getall';
+import { getAllReport } from '../api/getAllReport';
 
 const Home = () => {
   const [A, SetA] = useState();
@@ -9,7 +9,7 @@ const Home = () => {
   // }, []);
 
   useEffect(() => {
-    getall();
+    getAllReport();
     // console.log(getall());
   }, []);
   return (

@@ -7,7 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title';
 import { useQuery } from '@tanstack/react-query';
-import { getall } from '../../api/getall';
+import { getAllReport } from '../../api/getAllReport';
+import { getAllNotice, getNoticeDetail } from '../../api/notice/get';
 // Generate Order Data
 function createData(
   id: number,
@@ -24,13 +25,16 @@ function preventDefault(event: React.MouseEvent) {
   event.preventDefault();
 }
 
-export default function Orders() {
-  const { data } = useQuery({ queryKey: ['as'], queryFn: getall });
-  const examdata = data?.examPostReports;
-  const evaluatedata = data?.evaluatePostReports;
+export default function Reoports() {
+  const { data: reportData } = useQuery({
+    queryKey: ['reportData'],
+    queryFn: getAllReport,
+  });
+  const examdata = reportData?.examPostReports;
+  const evaluatedata = reportData?.evaluatePostReports;
+
   console.log(examdata, evaluatedata);
 
-  // console.log(data);
   function formatDate(date: string): string {
     const formattedDate = new Date(date).toLocaleDateString('ko-KR', {
       year: 'numeric',
@@ -40,7 +44,7 @@ export default function Orders() {
     return formattedDate;
   }
 
-  console.log(formatDate(data));
+  // console.log(formatDate(data));
   return (
     <React.Fragment>
       <Title>신고내역</Title>
@@ -56,7 +60,7 @@ export default function Orders() {
         </TableHead>
 
         <TableBody>
-          {evaluatedata.map((data: any) => {
+          {evaluatedata?.map((data: any) => {
             return (
               <TableRow key={data.id}>
                 <TableCell>{formatDate(data.reportedDate)}</TableCell>
