@@ -9,11 +9,15 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Link,
+  Button,
 } from '@mui/material';
 import Title from './Title';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Notice() {
+  const navigate = useNavigate();
   const [Array, setArray] = useState();
   const { data: noticeAllData, isLoading } = useQuery({
     queryKey: ['noticeAllData'],
@@ -47,7 +51,14 @@ export default function Notice() {
             {reversedArray.map((notice: any) => (
               <TableRow key={notice.id}>
                 <TableCell>{notice.id}</TableCell>
-                <TableCell>{notice.title}</TableCell>
+                <TableCell
+                  sx={{ cursor: 'pointer' }}
+                  onClick={() =>
+                    navigate(`/noticeDetail?noticeId=${notice.id}`)
+                  }
+                >
+                  {notice.title}
+                </TableCell>
                 <TableCell>
                   {new Date(notice.modifiedDate).toLocaleDateString('ko-KR', {
                     year: 'numeric',
@@ -57,6 +68,8 @@ export default function Notice() {
                 </TableCell>
               </TableRow>
             ))}
+
+            <Button onClick={() => navigate('/')}> 공지사항 작성하기</Button>
           </TableBody>
         </Table>
       </TableContainer>

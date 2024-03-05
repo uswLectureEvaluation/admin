@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import LoginAPi from './pages/Login';
 import Main from './pages/Main';
 import NoticeDetail from './pages/NoticeDetail';
+import Update from './pages/Update';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/Main" element={<Main />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/NoticeDetail" element={<NoticeDetail />} />
+        <Route path="/Update" element={<Update />} />
       </Routes>
     </BrowserRouter>
   );
