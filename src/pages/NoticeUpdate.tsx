@@ -5,13 +5,13 @@ import { Box, Container, Typography, TextField, Button } from '@mui/material';
 
 import { putNotice } from '../api/notice/put';
 
-const Update = () => {
+const NoticeUpdate = () => {
   // let location = useLocation();
   // let navigate = useNavigate();
   // console.log(location);
   // const { props } = location.state;
   // const [db, setData] = useState({
-  //   data: [],
+  //   data: [],  
   // });
 
   // const [loading, setLoading] = useState(false);
@@ -89,4 +89,4 @@ const Update = () => {
   );
 };
 
-export default Update;
+export default NoticeUpdate;

@@ -1,11 +1,10 @@
 import apiAxios from '../apiAxios';
 
 export const postNotice = async (
-  id: number,
-  data: { title: string; content: string }
+  data: { title: string | undefined ; content: string | undefined}
 ) => {
   await apiAxios
-    .post(`/notice/?noticeId=${id}`, data)
+    .post(`/notice/`, data)
     .then(r => {
       r.data;
     })

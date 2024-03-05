@@ -16,9 +16,10 @@ apiAxios.interceptors.request.use(config => {
   const { url, headers } = config;
   if (token) {
     headers.Authorization = `Bearer ${token}`;
-  }
-
-  //asdsfa
+  } 
+  
+  
+  
   // else {
   //   window.location.href = '/';
   // }
