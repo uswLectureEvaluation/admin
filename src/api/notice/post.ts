@@ -6,10 +6,8 @@ export const postNotice = async (data: {
 }) => {
   try {
     const response = await apiAxios.post(`/notice/`, data);
-
     alert('글이 등록되었습니다.');
-
-    return console.log(response);
+    return response.data;
   } catch (error) {
     console.log(error);
   }
