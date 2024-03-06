@@ -51,12 +51,12 @@ const NoticeDetail = () => {
         </Typography>
         <div>
           <Typography color={'blue'} variant="h6">
-            {noticeData?.data.title}
+            {noticeData?.data?.title}
           </Typography>
           <Typography sx={{ mb: '8px' }} color={'gray'} variant="subtitle1">
-            {formatDate(noticeData?.data.modifiedDate)}
+            {formatDate(noticeData?.data?.modifiedDate)}
           </Typography>
-          <Typography variant="body1">{noticeData?.data.content}</Typography>
+          <Typography variant="body1">{noticeData?.data?.content}</Typography>
         </div>
         <div>
           <Button
@@ -69,7 +69,9 @@ const NoticeDetail = () => {
           <Button
             sx={{ mx: '10px', my: '10px' }}
             variant="contained"
-            onClick={() => navigate('/update', { state: { props: db.data } })}
+            onClick={() =>
+              navigate(`/update?noticeId=${id}`, { state: { props: db.data } })
+            }
           >
             수정
           </Button>
