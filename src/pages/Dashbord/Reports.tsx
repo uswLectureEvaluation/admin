@@ -9,6 +9,7 @@ import Title from './Title';
 import { useQuery } from '@tanstack/react-query';
 import { getAllReport } from '../../api/getAllReport';
 import { getAllNotice, getNoticeDetail } from '../../api/notice/get';
+import { useState, useEffect } from 'react';
 // Generate Order Data
 function createData(
   id: number,
@@ -26,12 +27,20 @@ function preventDefault(event: React.MouseEvent) {
 }
 
 export default function Reoports() {
-  const { data: reportData } = useQuery({
+  const { data: reportData, isLoading } = useQuery({
     queryKey: ['reportData'],
     queryFn: getAllReport,
   });
-  const examdata = reportData?.examPostReports;
-  const evaluatedata = reportData?.evaluatePostReports;
+
+  const [examdata, setExamdata] = useState();
+  const [evaluatedata, setEvaluatedata] = useState<Array<string>>();
+
+  useEffect(() => {
+    if (!isLoading) {
+      setExamdata(reportData?.examPostReports);
+      setEvaluatedata(reportData?.evaluatePostReports);
+    }
+  }, [reportData, isLoading]);
 
   console.log(examdata, evaluatedata);
 
