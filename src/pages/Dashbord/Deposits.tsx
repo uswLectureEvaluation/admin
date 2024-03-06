@@ -3,18 +3,21 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import Title from './Title';
 import { getCookie } from '../../utils/Cookies';
-
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
+import { useEffect, useState } from 'react';
 
 const currentDate = new Date();
 const customDate = `${currentDate.getFullYear()}년 ${
   currentDate.getMonth() + 1
 }월 ${currentDate.getDate()}일`;
 
-const memberCount = getCookie('member');
 export default function Deposits() {
+  const [memberCount, setMemberCount] = useState(0);
+  useEffect(() => {
+    if (getCookie('member')) {
+      setMemberCount(getCookie('member'));
+    }
+  }, []);
+
   return (
     <React.Fragment>
       <div
@@ -34,11 +37,7 @@ export default function Deposits() {
           <Typography color="text.secondary" sx={{ flex: 1 }}>
             {customDate}
           </Typography>
-          <div>
-            {/* <Link color="primary" href="#" onClick={preventDefault}>
-              View balance
-            </Link> */}
-          </div>
+          <div></div>
         </div>
       </div>
     </React.Fragment>

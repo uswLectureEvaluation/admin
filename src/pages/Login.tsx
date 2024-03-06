@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -11,7 +10,7 @@ import { LoginDataType } from '../api/login';
 import LoginApi from '../api/login';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getCookie } from '../utils/Cookies';
+import { getCookie, setCookie } from '../utils/Cookies';
 import { useMutation } from '@tanstack/react-query';
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -21,40 +20,14 @@ const Login = () => {
   const { login } = LoginApi();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  //   useEffect(() => {
-  //     const IsToken = getCookie('Accesstoken');
-  //     if (IsToken) {
-  //       // setLoading(true);
-  //       navigate('/main');
-  //     }
-  //   }, [login]);
-
-  //   useEffect(() => {
-  //     if (loading) {
-  //       navigate('/main');
-  //     }
-  //   });
 
   const LoginMutation = useMutation({
     mutationFn: (data: LoginDataType) => login(data) as Promise<void>,
-    // onSuccess: () => {
-    //   console.log('요청 성공');
-    // },
-    // onError: () => {
-    //   console.error('에러 발생');
-    // },
-    // onSettled: () => {
-    //   console.log('결과에 관계 없이 무언가 실행됨');
-    // },
   });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      loginId: data.get('email')?.toString(),
-      password: data.get('password'),
-    });
     LoginMutation.mutate({
       loginId: data.get('email')?.toString() ?? '',
       password: data.get('password')?.toString() ?? '',
@@ -74,11 +47,10 @@ const Login = () => {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            SUWIKI ADMIN
+          <img src="logo.png" width="150px"></img>
+
+          <Typography sx={{ mt: '10px' }} component="h1" variant="h5">
+            ADMIN
           </Typography>
           <Box
             component="form"
