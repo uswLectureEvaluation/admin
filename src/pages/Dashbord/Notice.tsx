@@ -68,10 +68,14 @@ export default function Notice() {
                 </TableCell>
               </TableRow>
             ))}
-
-            <Button onClick={() => navigate('/')}> 공지사항 작성하기</Button>
           </TableBody>
         </Table>
+        <Button
+          // sx={{ marginRight: '400px' }}
+          onClick={() => navigate('/Write')}
+        >
+          공지사항 작성하기
+        </Button>
       </TableContainer>
     </Box>
   );

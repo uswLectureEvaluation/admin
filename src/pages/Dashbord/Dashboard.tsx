@@ -200,7 +200,9 @@ export default function Dashboard() {
                 xs={12}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
-                <Notice />
+                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <Notice />
+                </Paper>
               </Grid>
             </Grid>
           </Container>

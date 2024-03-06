@@ -22,10 +22,6 @@ function createData(
   return { id, date, name, shipTo, paymentMethod, amount };
 }
 
-function preventDefault(event: React.MouseEvent) {
-  event.preventDefault();
-}
-
 export default function Reoports() {
   const { data: reportData, isLoading } = useQuery({
     queryKey: ['reportData'],
