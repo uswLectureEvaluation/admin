@@ -1,8 +1,14 @@
 import apiAxios from '../apiAxios';
 
-export const putNotice = async (data: { title: string; content: string }) => {
+export const putNotice = async (
+  id: number,
+  data: {
+    title: string | undefined;
+    content: string | undefined;
+  }
+) => {
   await apiAxios
-    .put(`/notice/`, data)
+    .put(`/notice/?noticeId=${id}`, data)
     .then(r => {
       r.data;
     })
