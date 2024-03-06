@@ -36,7 +36,7 @@ export default function Reoports() {
       setExamdata(reportData?.examPostReports);
       setEvaluatedata(reportData?.evaluatePostReports);
     }
-  }, [reportData, isLoading]);
+  }, [reportData, isLoading, evaluatedata]);
 
   console.log(examdata, evaluatedata);
 
