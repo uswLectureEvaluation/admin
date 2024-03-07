@@ -27,7 +27,7 @@ export default function Notice() {
     if (!isLoading) {
       setArray(noticeAllData?.data);
     }
-  }, [noticeAllData, isLoading]);
+  }, [isLoading]);
 
   const reversedArray = Array ? [...Array].reverse() : [];
 

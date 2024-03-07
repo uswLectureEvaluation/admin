@@ -36,7 +36,7 @@ export default function Reoports() {
       setExamdata(reportData?.examPostReports);
       setEvaluatedata(reportData?.evaluatePostReports);
     }
-  }, [reportData, isLoading, evaluatedata]);
+  }, [reportData, isLoading]);
 
   console.log(examdata, evaluatedata);
 
@@ -48,7 +48,9 @@ export default function Reoports() {
     });
     return formattedDate;
   }
-
+  if (isLoading) {
+    return <div>로딩중</div>;
+  }
   // console.log(formatDate(data));
   return (
     <React.Fragment>
