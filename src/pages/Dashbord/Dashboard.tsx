@@ -73,6 +73,17 @@ const Drawer = styled(MuiDrawer, {
         width: theme.spacing(9),
       },
     }),
+    '@media (max-width: 900px)': {
+      overflowX: 'hidden',
+      transition: theme.transitions.create('width', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+      }),
+      width: theme.spacing(7),
+      [theme.breakpoints.up('sm')]: {
+        width: theme.spacing(9),
+      },
+    },
   },
   marginTop: '32px',
 }));
@@ -100,7 +111,7 @@ export default function Dashboard() {
               edge="start"
               color="inherit"
               aria-label="open drawer"
-              onClick={toggleDrawer}
+              // onClick={toggleDrawer}
               sx={{
                 marginRight: '36px',
                 ...(open && { display: 'none' }),
@@ -133,9 +144,10 @@ export default function Dashboard() {
               px: [1],
             }}
           >
-            <IconButton onClick={toggleDrawer}>
+            {/* <IconButton onClick={toggleDrawer}> */}
+            {/* <IconButton>
               <ChevronLeftIcon />
-            </IconButton>
+            </IconButton> */}
           </Toolbar>
           <Divider />
           <List component="nav">
