@@ -200,7 +200,10 @@ export default function Dashboard() {
               <Grid
                 item
                 xs={12}
-                sx={{ display: 'flex', justifyContent: 'center' }}
+                sx={{
+                  display: { xs: 'none', md: 'flex' },
+                  justifyContent: 'center',
+                }}
               >
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Reoports />

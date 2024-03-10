@@ -11,8 +11,8 @@ const NoticeUpdate = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const id = Number(searchParams.get('noticeId'));
-  const [title, setTitle] = useState<string>();
-  const [content, setContent] = useState<string>();
+  const [title, setTitle] = useState<string>('');
+  const [content, setContent] = useState<string>('');
   console.log(id);
   const { data: noticeData, isLoading } = useQuery({
     queryKey: ['noticeData'],
