@@ -15,6 +15,7 @@ export interface CookieSetOptions {
   httpOnly?: boolean;
   sameSite?: boolean | 'none' | 'lax' | 'strict';
 }
+//
 export interface CookieChangeOptions {
   name: string;
   value?: any;
