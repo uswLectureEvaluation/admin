@@ -10,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllReport } from '../../api/getAllReport';
 import { getAllNotice, getNoticeDetail } from '../../api/notice/get';
 import { useState, useEffect } from 'react';
+import { getCookie } from '../../utils/Cookies';
 // Generate Order Data
 function createData(
   id: number,
@@ -23,6 +24,7 @@ function createData(
 }
 
 export default function Reoports() {
+  const token = getCookie('Accesstoken');
   const { data: reportData, isLoading } = useQuery({
     queryKey: ['reportData'],
     queryFn: getAllReport,
@@ -67,16 +69,17 @@ export default function Reoports() {
         </TableHead>
 
         <TableBody>
-          {evaluatedata?.map((data: any) => {
-            return (
-              <TableRow key={data.id}>
-                <TableCell>{formatDate(data.reportedDate)}</TableCell>
-                <TableCell>{data.professor}</TableCell>
-                <TableCell>{data.lectureName}</TableCell>
-                <TableCell>{data.content}</TableCell>
-              </TableRow>
-            );
-          })}
+          {token &&
+            evaluatedata?.map((data: any) => {
+              return (
+                <TableRow key={data.id}>
+                  <TableCell>{formatDate(data.reportedDate)}</TableCell>
+                  <TableCell>{data.professor}</TableCell>
+                  <TableCell>{data.lectureName}</TableCell>
+                  <TableCell>{data.content}</TableCell>
+                </TableRow>
+              );
+            })}
         </TableBody>
       </Table>
     </React.Fragment>

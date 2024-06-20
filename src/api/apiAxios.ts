@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { setCookie, getCookie } from '../utils/Cookies';
+import {getCookie } from '../utils/Cookies';
 
 const token = getCookie('Accesstoken');
 
@@ -13,7 +13,7 @@ const apiAxios = axios.create({
 });
 
 apiAxios.interceptors.request.use(config => {
-  const { url, headers } = config;
+  const {  headers } = config;
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   } 
