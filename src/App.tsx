@@ -8,10 +8,11 @@ import Main from './pages/Main';
 import NoticeDetail from './pages/NoticeDetail';
 import NoticeUpdate from './pages/NoticeUpdate';
 import NoticeWrite from './pages/NoticeWrite';
-
+import { AuthorizationProvider } from './providers/Authentication.tsx';
 const App = () => {
   return (
     <BrowserRouter>
+    <AuthorizationProvider>
       <Routes>
         <Route path="/" element={<LoginAPi />} />
         <Route path="/Main" element={<Main />} />
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/Update" element={<NoticeUpdate />} />
         <Route path="/Write" element={<NoticeWrite />} />
       </Routes>
+      </AuthorizationProvider>
     </BrowserRouter>
   );
 };

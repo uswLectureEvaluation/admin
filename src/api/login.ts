@@ -1,7 +1,6 @@
 import apiAxios from './apiAxios';
-import { setCookie, getCookie } from '../utils/Cookies';
+import { setCookie } from '../utils/Cookies';
 import { useNavigate } from 'react-router-dom';
-import CustomRouter from '../utils/Routers';
 
 export interface LoginDataType {
   loginId: string;
@@ -18,6 +17,7 @@ const LoginAPi = () => {
         console.log(r.data);
         setCookie('member', r.data.UserCount);
         navigate('/main');
+        window.location.reload();
       })
       .catch(e => {
         e.response.data, alert('아이디 또는 비밀번호를 다시 입력해주세요');
@@ -28,19 +28,3 @@ const LoginAPi = () => {
 };
 
 export default LoginAPi;
-
-// export const login = async (loginData: LoginDataType) => {
-//   const navigation = CustomRouter();
-
-//   await apiAxios
-//     .post('/v2/admin/login', loginData)
-//     .then(r => {
-//       setCookie('Accesstoken', r.data.AccessToken);
-//       console.log(r.data);
-//       setCookie('member', r.data.UserCount);
-//     })
-
-//     .catch(e => {
-//       e.response.data, alert('아이디 또는 비밀번호를 다시 입력해주세요');
-//     });
-// };
