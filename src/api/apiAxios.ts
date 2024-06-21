@@ -1,7 +1,8 @@
 import axios from 'axios';
-import {getCookie } from '../utils/Cookies';
+import { getCookie } from '../utils/Cookies';
 
 const token = getCookie('Accesstoken');
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const apiAxios = axios.create({
   baseURL: import.meta.env.VITE_APP_SERVER_HOST,
@@ -13,25 +14,20 @@ const apiAxios = axios.create({
 });
 
 apiAxios.interceptors.request.use(config => {
-  const {  headers } = config;
+  const { headers } = config;
   if (token) {
     headers.Authorization = `Bearer ${token}`;
-  } 
-  
-  
-  
-  // else {
-  //   window.location.href = '/';
-  // }
+  }
+
   (error: any) => Promise.reject(error);
 
   return config;
 });
 
 apiAxios.interceptors.response.use(config => {
-  const { headers } = config;
+  const a = config;
 
-  return config;
+  return a;
 });
 
 export default apiAxios;

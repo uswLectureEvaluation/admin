@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Box, Button, Container, Typography } from '@mui/material';
@@ -8,14 +8,14 @@ import { useQuery } from '@tanstack/react-query';
 const NoticeDetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   // console.log(location);
   //   const location = useLocation();
   // const { id } = window.location.
   // const { props } = location.state;
   console.log(location);
   const id = Number(searchParams.get('noticeId'));
-  const [db, setData] = useState({ data: {} });
+  const [db] = useState({ data: {} });
   const onDelete = () => {
     if (window.confirm('강의평가를 삭제하시겠습니까?')) {
       deleteNotice(id);

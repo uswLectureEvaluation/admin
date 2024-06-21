@@ -1,4 +1,3 @@
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -8,9 +7,6 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { LoginDataType } from '../api/login';
 import LoginApi from '../api/login';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getCookie, setCookie } from '../utils/Cookies';
 import { useMutation } from '@tanstack/react-query';
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -18,8 +14,6 @@ const defaultTheme = createTheme();
 
 const Login = () => {
   const { login } = LoginApi();
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   const LoginMutation = useMutation({
     mutationFn: (data: LoginDataType) => login(data) as Promise<void>,

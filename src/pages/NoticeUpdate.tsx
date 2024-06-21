@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Box, Container, Typography, TextField, Button } from '@mui/material';
 
@@ -9,7 +8,7 @@ import { getNoticeDetail } from '../api/notice/get';
 
 const NoticeUpdate = () => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const id = Number(searchParams.get('noticeId'));
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');

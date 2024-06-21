@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, Container, Typography, TextField, Button } from '@mui/material';
 
 import { postNotice } from '../api/notice/post';
-import { useQuery } from '@tanstack/react-query';
-import { getNoticeDetail } from '../api/notice/get';
 
 const NoticeWrite = () => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
   //   const id = Number(searchParams.get('noticeId'));
   const [title, setTitle] = useState<string>();
   const [content, setContent] = useState<string>();

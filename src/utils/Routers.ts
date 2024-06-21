@@ -1,17 +1,12 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function CustomRouter() {
+  const navigation = () => {
+    // const navigate = useNavigate();
+    // navigate('/home');
+  };
 
-
-    const navigation = () =>{
-        const navigate = useNavigate();
-        navigate('/home');
-    }
-
-
-    return navigation
-    }
-  
+  return navigation;
+}
 
 export default CustomRouter;

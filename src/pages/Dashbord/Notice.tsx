@@ -1,21 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import { getAllNotice, getNoticeDetail } from '../../api/notice/get';
+import { getAllNotice } from '../../api/notice/get';
 import {
   Box,
-  Typography,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Link,
   Button,
 } from '@mui/material';
 import Title from './Title';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export default function Notice() {
   const navigate = useNavigate();
   const [Array, setArray] = useState();
@@ -23,6 +21,8 @@ export default function Notice() {
     queryKey: ['noticeAllData'],
     queryFn: () => getAllNotice(1),
   });
+
+  /*eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     if (!isLoading) {
       setArray(noticeAllData?.data);
