@@ -201,7 +201,7 @@ export default function Dashboard() {
                   justifyContent: 'center',
                 }}
               >
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                <Paper sx={{ p: 4, display: 'flex', flexDirection: 'column' }}>
                   <Reoports />
                 </Paper>
               </Grid>

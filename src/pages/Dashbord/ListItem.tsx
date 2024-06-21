@@ -46,13 +46,7 @@ export const secondaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="과목 관리" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="시간표" />
+      <ListItemText primary="과목 개설" />
     </ListItemButton>
   </React.Fragment>
 );

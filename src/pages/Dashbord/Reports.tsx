@@ -59,9 +59,9 @@ export default function Reoports() {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>날짜</TableCell>
-            <TableCell>교수이름</TableCell>
-            <TableCell>과목명</TableCell>
+            <TableCell style={{ width: '9.2%' }}>날짜</TableCell>
+            <TableCell style={{ width: '11%' }}>교수이름</TableCell>
+            <TableCell style={{ width: '13%' }}>과목명</TableCell>
             <TableCell>신고내용</TableCell>
             <TableCell>처리여부</TableCell>
           </TableRow>
