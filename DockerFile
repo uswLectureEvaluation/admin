@@ -14,7 +14,7 @@ COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile 
 
 ###########################################################
-
+#
 # 2단계: next.js 빌드 단계
 FROM node:20-alpine AS builder
 
