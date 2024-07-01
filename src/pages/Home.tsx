@@ -10,6 +10,7 @@ const Home = () => {
       {A}
     </div>
   );
+  //
 };
 
 export default Home;
