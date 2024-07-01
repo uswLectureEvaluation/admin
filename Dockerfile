@@ -9,15 +9,17 @@ RUN yarn install
 COPY . .
 RUN yarn build
 
-# Step 2: Serve the Vite app using a simple HTTP server
+# Step 2: Serve the Vite app using PM2
 FROM node:20-alpine
 
 WORKDIR /app
 
 COPY --from=builder /app/dist /app
 
-RUN npm install -g serve
+RUN npm install -g pm2
+
+COPY ecosystem.config.js ./
 
 EXPOSE 3000
 
-CMD ["serve", "-s", ".", "-l", "3000"]
+CMD ["pm2-runtime", "ecosystem.config.js"]
