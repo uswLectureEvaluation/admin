@@ -16,10 +16,10 @@ WORKDIR /app
 
 COPY --from=builder /app/dist /app
 
-RUN npm install -g pm2
+RUN npm install -g pm2 serve
 
 COPY ecosystem.config.js ./
 
 EXPOSE 3000
 
-CMD ["pm2-runtime", "ecosystem.config.js"]
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]
