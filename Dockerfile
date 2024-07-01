@@ -9,13 +9,15 @@ RUN yarn install
 COPY . .
 RUN yarn build
 
-# Step 2: Serve the Vite app with Nginx
-FROM nginx:alpine
+# Step 2: Serve the Vite app using a simple HTTP server
+FROM node:20-alpine
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/dist /app
 
-EXPOSE 80
+RUN npm install -g serve
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+
+CMD ["serve", "-s", ".", "-l", "3000"]
