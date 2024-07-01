@@ -19,7 +19,9 @@ jobs:
       - name: creates output
         run: sh ./build.sh
       - name: Copy cd-aws.yml to output
-        run: cp .github/workflows/cd-aws.yml output/cd-aws.yml
+        run: |
+          mkdir -p output/.github/workflows
+          cp .github/workflows/cd-aws.yml output/.github/workflows/cd-aws.yml
       - name: Pushes to another repository
         id: push_directory
         uses: cpina/github-action-push-to-another-repository@main
