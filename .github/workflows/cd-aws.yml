@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/nextjs-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
 
       - name: Logout from Docker Hub
         run: docker logout
@@ -49,17 +49,14 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             # Pull the latest Docker image
-            docker pull ${{ secrets.DOCKER_USERNAME }}/nextjs-app:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
 
             # Stop the currently running container
-            docker stop nextjs-app || true
+            docker stop vite-react-app || true
 
             # Remove the stopped container
-            docker rm nextjs-app || true
+            docker rm vite-react-app || true
 
-            # Run the new container
-            docker run -d -p 3000:3000 --name nextjs-app ${{ secrets.DOCKER_USERNAME }}/nextjs-app:latest
-
-            # Restart PM2 to apply the new Docker container
-            pm2 restart all
+            # Run the new container with PM2
+            docker run -d -p 3000:3000 --name vite-react-app ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
           EOF
