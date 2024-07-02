@@ -20,8 +20,13 @@ WORKDIR /app
 
 COPY --from=builder /app/dist /app
 
+# PM2와 serve 설치
 RUN npm install -g pm2 serve
 
 EXPOSE 3000
 
+# ESM 모듈을 지원하기 위해 NODE_OPTIONS 설정 추가
+ENV NODE_OPTIONS="--experimental-modules"
+
+# PM2를 사용하여 serve 실행
 CMD ["pm2-runtime", "serve", "-s", ".", "-l", "3000"]
