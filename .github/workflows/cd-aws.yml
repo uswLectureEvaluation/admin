@@ -53,12 +53,16 @@ jobs:
             # Pull the latest Docker image
             docker pull ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
 
-            # Stop the currently running container
-            docker stop vite-react-app || true
+            # Run the new container
+            docker run -d -p 3000:3000 --name vite-react-app-new -e VITE_APP_SERVER_HOST=${{ secrets.VITE_APP_SERVER_HOST }} ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
 
-            # Remove the stopped container
+            # Wait for the new container to be healthy (adjust the sleep time as needed)
+            sleep 10
+
+            # Remove the old container
+            docker stop vite-react-app || true
             docker rm vite-react-app || true
 
-            # Run the new container
-            docker run -d -p 3000:3000 --name vite-react-app -e VITE_APP_SERVER_HOST=${{ secrets.VITE_APP_SERVER_HOST }} ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
+            # Rename the new container to the old container's name
+            docker rename vite-react-app-new vite-react-app
           EOF
