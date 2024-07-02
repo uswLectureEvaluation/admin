@@ -7,6 +7,11 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 COPY . .
+
+# 환경 변수 설정
+ARG VITE_APP_SERVER_HOST
+ENV VITE_APP_SERVER_HOST=${VITE_APP_SERVER_HOST}
+
 RUN yarn build
 
 # Step 2: Serve the Vite app using a static file server

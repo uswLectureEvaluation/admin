@@ -28,6 +28,8 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
+          build-args: |
+            VITE_APP_SERVER_HOST=${{ secrets.VITE_APP_SERVER_HOST }}
 
       - name: Logout from Docker Hub
         run: docker logout
@@ -57,6 +59,6 @@ jobs:
             # Remove the stopped container
             docker rm vite-react-app || true
 
-            # Run the new container with PM2
-            docker run -d -p 3000:3000 --name vite-react-app ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
+            # Run the new container
+            docker run -d -p 3000:3000 --name vite-react-app -e VITE_APP_SERVER_HOST=${{ secrets.VITE_APP_SERVER_HOST }} ${{ secrets.DOCKER_USERNAME }}/vite-react-app:latest
           EOF
