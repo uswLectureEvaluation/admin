@@ -44,7 +44,7 @@ const Login = () => {
           <img src="logo.png" width="150px"></img>
 
           <Typography sx={{ mt: '10px' }} component="h1" variant="h5">
-            ADMIN2
+            ADMIN
           </Typography>
           <Box
             component="form"
